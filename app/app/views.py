@@ -3,7 +3,7 @@ import urllib
 import markdown2
 
 
-GITHUB_README_URL = 'https://raw.githubusercontent.com/pgellert/simple-api/master/README.md' # noqa: E501
+GITHUB_README_URL = 'https://raw.githubusercontent.com/pgellert/simple-api/master/README.md'  # noqa: E501
 
 
 def index(request):

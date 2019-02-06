@@ -54,11 +54,10 @@ Subsequently, the API responses are going to denote the content of the *`data`* 
 
 *** Definition
 
-`PUSH /groceries`
+`PUT /groceries/<name>`
 
 *** Arguments
 
-  - `"name":string` the name of the grocery (unique identifier)
   - `"amount":string` the amount of the grocery needed
   - `"msg":string` any extra information
 
