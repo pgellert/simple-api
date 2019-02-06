@@ -4,10 +4,11 @@
 This is a simple API that can store a list of groceries
 
 Tools used:
-  - Django
-  - Docker
-  - Travis CI
-  - Flake8
+  * Django
+  * Django Rest Framework
+  * Docker
+  * Travis CI
+  * Flake8
 
 ## Usage
 

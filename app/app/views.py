@@ -2,9 +2,10 @@ from django.http import HttpResponse
 import urllib
 import markdown2
 
+GITHUB_README_URL = 'https://raw.githubusercontent.com/pgellert/simple-api/master/README.md'
 
 def index(request):
-    with urllib.request.urlopen('https://raw.githubusercontent.com/pgellert/simple-api/master/README.md') as response:
+    with urllib.request.urlopen(GITHUB_README_URL) as response:
         content = response.read().decode('utf-8')
         return HttpResponse(markdown2.markdown(content))
 
