@@ -11,7 +11,7 @@ class GroceryItem(models.Model):
     msg = models.CharField(max_length=255, blank=True)
 
     def get_item(self):
-        return 'You need ' + str(self.amount) + ' of '
+        return 'You need ' + str(self.amount) + ' of ' \
         + self.name + ' (' + self.msg + ').'
 
     def __repr__(self):
