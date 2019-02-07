@@ -10,17 +10,6 @@ Tools used:
   * Travis CI
   * Flake8
 
-## Usage
-
-```json
-{
-    "data": "Mixed type holding the content of the response",
-    "message": "Description of what happened"
-}
-```
-
-Subsequently, the API responses are going to denote the content of the *`data`* field
-
 
 ### List groceries
 
@@ -50,25 +39,74 @@ Subsequently, the API responses are going to denote the content of the *`data`* 
   ```
 
 
-### Add/Update grocery in list
+### Add grocery to list
 
 *** Definition
 
-`PUT /groceries/<name>`
-
-*** Arguments
-
-  - `"amount":string` the amount of the grocery needed
-  - `"msg":string` any extra information
-
-If a grocery with the same name exists, it gets updated (overwritten) by this request
+`PUSH /groceries`
 
 *** Response
 
   - `201 Created` on success
+  - `400 Bad request` if the data is invalid
 
   ```json
   {
+    "id": "12",
+    "name": "milk",
+    "amount": "2",
+    "msg": "Needed for cake"
+  }
+  ```
+
+
+### Get grocery from list
+
+*** Definition
+
+`GET /groceries/<id>`
+
+*** Arguments
+
+  - `"name":string` the name of the grocery
+  - `"amount":string` the amount of the grocery needed
+  - `"msg":string` any extra information
+
+*** Response
+
+  - `200 OK` on success
+  - `404 Not Found` if no such grocery in list
+
+  ```json
+  {
+    "id": "12",
+    "name": "milk",
+    "amount": "2",
+    "msg": "Needed for cake"
+  }
+  ```
+
+
+### Update grocery in list
+
+*** Definition
+
+`PUT /groceries/<id>`
+
+*** Arguments
+
+  - `"name":string` the name of the grocery
+  - `"amount":string` the amount of the grocery needed
+  - `"msg":string` any extra information
+
+*** Response
+
+  - `204 No Content` on success
+  - `400 Bad request` if the data is invalid
+
+  ```json
+  {
+    "id": "12",
     "name": "milk",
     "amount": "2",
     "msg": "Needed for cake"
@@ -80,9 +118,9 @@ If a grocery with the same name exists, it gets updated (overwritten) by this re
 
 *** Definition
 
-`DELETE /groceries/<name>`
+`DELETE /groceries/<id>`
 
 *** Response
 
-  - `404 Not Found` if no such grocery in list
   - `204 No Content` on success
+  - `404 Not Found` if no such grocery in list

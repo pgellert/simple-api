@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.7
 MAINTAINER Gellért Peresztegi-Nagy
 
 ENV PYTHONUNBUFFERED 1
@@ -10,5 +10,5 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
 
-RUN adduser -D user
+RUN adduser -disabled-login user
 USER user
