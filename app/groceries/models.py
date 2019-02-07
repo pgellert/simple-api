@@ -12,7 +12,7 @@ class GroceryItem(models.Model):
 
     def get_item(self):
         return 'You need ' + str(self.amount) + ' of '
-            + self.name + ' (' + self.msg + ').'
+        + self.name + ' (' + self.msg + ').'
 
     def __repr__(self):
         return self.name + ' is added.'
