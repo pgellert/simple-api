@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class GroceryItem(models.Model):
     """
     GroceryItem Model
@@ -10,7 +11,8 @@ class GroceryItem(models.Model):
     msg = models.CharField(max_length=255, blank=True)
 
     def get_item(self):
-        return 'You need ' + str(self.amount) + ' of ' + self.name + ' (' + self.msg + ').'
+        return 'You need ' + str(self.amount) + ' of '
+            + self.name + ' (' + self.msg + ').'
 
     def __repr__(self):
         return self.name + ' is added.'
