@@ -7,8 +7,6 @@ before_script: pip install docker-compose
 script:
 - docker-compose run web sh -c "python manage.py test && flake8"
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin registry.heroku.com
-- heroku container:push web --app=simple-grocery-api
-- heroku container:release web --app=simple-grocery-api
 deploy:
   provider: heroku
   api_key:
