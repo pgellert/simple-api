@@ -5,9 +5,14 @@ python:
 services:
   - docker
 
+deploy:
+  provider: heroku
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
+
 before_script: pip install docker-compose
 
 script:
   - docker-compose run web sh -c "python manage.py test && flake8"
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin registry.heroku.com
-  - heroku ps:scale web=1
+  - heroku ps:scale web=1 --app=simple-grocery-api
