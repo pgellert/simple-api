@@ -13,4 +13,6 @@ COPY ./app /app
 RUN adduser -disabled-login user
 USER user
 
+CMD heroku run web python manage.py makemigrations
+CMD heroku run web python manage.py migrate
 CMD python3 manage.py runserver 0.0.0.0:$PORT
