@@ -85,6 +85,8 @@ DATABASES = {
         'PORT': 5432
     }
 }
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(default='postgres://mhseilxyxndsmq:8c614636dcb233eeb497cf52b7234e07e2075118338c68acc7b5f8085cf4cfaa@ec2-46-137-170-51.eu-west-1.compute.amazonaws.com:5432/d39qgbojogasvs')
 
 
 # Password validation
