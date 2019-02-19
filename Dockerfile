@@ -12,5 +12,3 @@ COPY . /app
 
 RUN adduser -disabled-login user
 USER user
-
-CMD python3 manage.py runserver 0.0.0.0:$PORT
