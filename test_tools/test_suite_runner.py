@@ -1,4 +1,6 @@
 """
+Source: https://gist.github.com/gregsadetsky/5018173/3a898e03939b1506e5353de09e80472760e11673
+
 To use this, run:
 heroku addons:add heroku-postgresql:dev
 heroku config:set TEST_DATABASE_URL="postgres://..." # replace with the new HEROKU_POSTGRESQL_<COLOR>_URL
