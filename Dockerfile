@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt
 
 RUN mkdir /app
 WORKDIR /app
-COPY ./app /app
+COPY . /app
 
 RUN adduser -disabled-login user
 USER user

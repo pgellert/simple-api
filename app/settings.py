@@ -27,7 +27,7 @@ SECRET_KEY = 'k(74d!d8f5=s^#ufc*cg0rb=i6ba5xa^*4w7fq&p)*qjpx+mw$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['simple-grocery-api.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
