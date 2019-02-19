@@ -13,7 +13,7 @@ from django.conf import settings
 from django.core.management import call_command
 from django.db.utils import ConnectionHandler
 
-class HerokuTestSuiteRunner(DjangoTestSuiteRunner):
+class HerokuTestSuiteRunner(DiscoverRunner):
     def setup_databases(self, **kwargs):
         ###
         # WARNING: NOT handling 'TEST_MIRROR', 'TEST_DEPENDENCIES'
@@ -39,7 +39,7 @@ class HerokuTestSuiteRunner(DjangoTestSuiteRunner):
             # django.db.backends.creation.create_test_db
 
             # make them tables
-            call_command('syncdb',
+            call_command('migrate',
                         verbosity=0,
                         interactive=False,
                         database=test_connection.alias,
@@ -50,10 +50,10 @@ class HerokuTestSuiteRunner(DjangoTestSuiteRunner):
                 interactive=False,
                 database=test_connection.alias)
 
-            from django.core.cache import get_cache
+            from django.core.cache import caches
             from django.core.cache.backends.db import BaseDatabaseCache
             for cache_alias in settings.CACHES:
-                cache = get_cache(cache_alias)
+                cache = caches[cache_alias]
                 if isinstance(cache, BaseDatabaseCache):
                     call_command('createcachetable', cache._table,
                                  database=test_connection.alias)
