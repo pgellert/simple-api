@@ -1,1 +1,1 @@
-web: python3 app/manage.py runserver
+web: gunicorn app.wsgi --log-file -
