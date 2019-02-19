@@ -131,7 +131,9 @@ REST_FRAMEWORK = {
 }
 
 TEST_DATABASES = {
-    'default': dj_database_url.config(env='TEST_DATABASE_URL')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql'
+    }
 }
 
 TEST_RUNNER = 'test_tools.test_suite_runner.HerokuTestSuiteRunner'
