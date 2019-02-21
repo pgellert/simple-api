@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/pgellert/simple-api.svg?branch=master)](https://travis-ci.org/pgellert/simple-api)
 # simple-api
 
-This is a simple API that can store a list of groceries
+This is a simple API that can store a list of groceries. The api is available at http://simple-grocery-api.herokuapp.com/api/v1/groceries
 
 Tools used:
   * Django
@@ -45,6 +45,12 @@ Tools used:
 
 `PUSH /groceries`
 
+*** Arguments
+
+  - `"name":string` the name of the grocery
+  - `"amount":string` the amount of the grocery needed
+  - `"msg":string` any extra information
+
 *** Response
 
   - `201 Created` on success
@@ -65,12 +71,6 @@ Tools used:
 *** Definition
 
 `GET /groceries/<id>`
-
-*** Arguments
-
-  - `"name":string` the name of the grocery
-  - `"amount":string` the amount of the grocery needed
-  - `"msg":string` any extra information
 
 *** Response
 
