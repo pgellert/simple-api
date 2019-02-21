@@ -77,11 +77,13 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASE_URL = str(os.environ['DATABASE_URL'])
+del os.environ['DATABASE_URL']
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(default='postgres://mhseilxyxndsmq:8c614636dcb233eeb497cf52b7234e07e2075118338c68acc7b5f8085cf4cfaa@ec2-46-137-170-51.eu-west-1.compute.amazonaws.com:5432/d39qgbojogasvs')
+DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
 DATABASES['default']['TEST'] = {}
-DATABASES['default']['TEST']['NAME'] = 'd39qgbojogasvs'
+DATABASES['default']['TEST']['NAME'] = DATABASE_URL.split('/')[-1]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

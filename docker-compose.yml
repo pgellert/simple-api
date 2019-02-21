@@ -8,3 +8,5 @@ services:
       - "8000:8000"
     command: >
       sh -c "python3 manage.py runserver 0.0.0.0:$PORT"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
