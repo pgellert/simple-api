@@ -6,6 +6,7 @@ class GroceryItemTest(TestCase):
     """ Test module for GroceryItem model """
 
     def setUp(self):
+        GroceryItem.objects.all().delete()
         GroceryItem.objects.create(
             name='milk', amount=2, msg='for cake')
         GroceryItem.objects.create(

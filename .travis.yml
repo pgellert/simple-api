@@ -1,11 +1,11 @@
 language: python
 python:
-- '3.6'
+  - '3.6'
 services:
-- docker
+  - docker
 before_script: pip install docker-compose
 script:
-- docker-compose run web sh -c "python manage.py test --keepdb && flake8"
+  - DATABASE_URL=$DATABASE_URL docker-compose run web sh -c "python manage.py test --keepdb && flake8"
 deploy:
   provider: heroku
   api_key:
