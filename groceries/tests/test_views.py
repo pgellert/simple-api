@@ -32,6 +32,16 @@ class GetAllGroceries(TestCase):
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+    def teardown(self):
+        GroceryItem.objects.get(
+            name='milk', amount=2, msg='for cake').delete()
+        GroceryItem.objects.get(
+            name='egg', amount=12, msg='for cake').delete()
+        GroceryItem.objects.get(
+            name='apple', amount=4, msg='').delete()
+        GroceryItem.objects.get(
+            name='cereal', amount=1, msg='').delete()
+
 
 class GetSingleGroceryItemTest(TestCase):
     """ Test module for GET single grocery item API """
@@ -58,6 +68,12 @@ class GetSingleGroceryItemTest(TestCase):
         response = client.get(
             reverse('get_delete_update_grocery', kwargs={'pk': 30}))
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def teardown(self):
+        self.milk.delete()
+        self.egg.delete()
+        self.apple.delete()
+        self.cereal.delete()
 
 
 class CreateNewGroceryItemTest(TestCase):
@@ -91,6 +107,9 @@ class CreateNewGroceryItemTest(TestCase):
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def teardown(self):
+        GroceryItem.objects.get(name='milk', amount=2, msg='').delete()
 
 
 class UpdateSingleGroceryItemTest(TestCase):
@@ -127,6 +146,10 @@ class UpdateSingleGroceryItemTest(TestCase):
             data=json.dumps(self.invalid_payload),
             content_type='application/json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def teardown(self):
+        self.milk.delete()
+        self.egg.delete()
 
 
 class DeleteSingleGroceryItemTest(TestCase):
