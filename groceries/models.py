@@ -10,6 +10,9 @@ class GroceryItem(models.Model):
     amount = models.IntegerField(default=1)
     msg = models.CharField(max_length=255, blank=True)
 
+    def __str__(self):
+        return self.name
+
     def get_item(self):
         return 'You need ' + str(self.amount) + ' of ' \
             + self.name + ' (' + self.msg + ').'

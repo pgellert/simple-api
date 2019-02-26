@@ -15,18 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, re_path, path
-
+from django.views.generic.base import TemplateView
 from . import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^accounts/', include('allauth.urls')),
-    path('', views.index, name='index'),
-    path('groceries/', views.grocery_list),
-    path('groceries/<str:name>', views.grocery_by_name),
+    re_path(r'^accounts/profile/$',
+            TemplateView.as_view(template_name='profile.html')),
+    path('', views.HomePageView.as_view(), name='index'),
+    path('groceries', views.GroceryListView.as_view(), name='grocery_list'),
+    path('add_item',
+         views.GorceryItemCreate.as_view(), name='add_grocery_item'),
+    re_path(
+        r'^groceries/(?P<pk>\d+)/$',
+        views.GorceryItemEdit.as_view(),
+        name='edit_grocery_item'
+    ),
     re_path(r'^', include('groceries.urls')),
     re_path(
         r'^api-auth/',
         include('rest_framework.urls', namespace='rest_framework')
     ),
+
 ]

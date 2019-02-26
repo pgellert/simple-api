@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Grocery list{% endblock %}
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for grocery_item in grocery_list %}
+      <tr>
+        <td><a href="{% url "edit_grocery_item" pk=grocery_item.pk %}">{{ grocery_item.name }}</a></td>
+        <td>{{ grocery_item.amount }}</td>
+        <td>{{ grocery_item.msg }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
