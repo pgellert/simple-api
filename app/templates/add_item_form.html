@@ -3,6 +3,8 @@
 {% block content %}
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Add item">
+    <button class="btn waves-effect waves-light" type="submit" name="confirm_add">Add
+        <i class="material-icons right">send</i>
+    </button>
 </form>
 {% endblock %}

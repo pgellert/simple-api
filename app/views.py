@@ -4,8 +4,10 @@ from groceries.models import GroceryItem
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 
 class HomePageView(TemplateView):
@@ -38,7 +40,11 @@ class GorceryItemEdit(UpdateView):
     model = GroceryItem
     fields = ['name', 'amount', 'msg']
     template_name = 'edit_item_form.html'
+    success_url = reverse_lazy('grocery_list')
 
-    def get_success_url(self):
-        return reverse('edit_grocery_item',
-                       kwargs={'pk': self.get_object().pk})
+    def post(self, request, pk):
+        if request.method == 'POST' and 'confirm_delete' in self.request.POST:
+            item = GroceryItem.objects.get(pk=pk)
+            item.delete()
+            return HttpResponseRedirect(self.success_url)
+        return super(GorceryItemEdit, self).post(request, pk)
