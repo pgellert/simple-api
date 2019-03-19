@@ -24,13 +24,13 @@ Tools used:
   ```json
   [
     {
-      "id": "12",
+      "pk": "12",
       "name": "milk",
       "amount": "2",
       "msg": "Needed for cake"
     },
     {
-      "id": "13",
+      "pk": "13",
       "name": "egg",
       "amount": "12",
       "msg": ""
@@ -58,7 +58,7 @@ Tools used:
 
   ```json
   {
-    "id": "12",
+    "pk": "12",
     "name": "milk",
     "amount": "2",
     "msg": "Needed for cake"
@@ -70,7 +70,7 @@ Tools used:
 
 *** Definition
 
-`GET /groceries/<id>`
+`GET /groceries/<pk>`
 
 *** Response
 
@@ -79,7 +79,7 @@ Tools used:
 
   ```json
   {
-    "id": "12",
+    "pk": "12",
     "name": "milk",
     "amount": "2",
     "msg": "Needed for cake"
@@ -91,7 +91,7 @@ Tools used:
 
 *** Definition
 
-`PUT /groceries/<id>`
+`PUT /groceries/<pk>`
 
 *** Arguments
 
@@ -106,10 +106,10 @@ Tools used:
 
   ```json
   {
-    "id": "12",
+    "pk": "12",
     "name": "milk",
     "amount": "2",
-    "msg": "Needed for cake"
+    "message": "Needed for cake"
   }
   ```
 
@@ -118,7 +118,7 @@ Tools used:
 
 *** Definition
 
-`DELETE /groceries/<id>`
+`DELETE /groceries/<pk>`
 
 *** Response
 
