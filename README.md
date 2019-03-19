@@ -24,15 +24,15 @@ Tools used:
   ```json
   [
     {
-      "pk": "12",
+      "pk": 12,
       "name": "milk",
-      "amount": "2",
+      "amount": 2,
       "msg": "Needed for cake"
     },
     {
-      "pk": "13",
+      "pk": 13,
       "name": "egg",
-      "amount": "12",
+      "amount": 12,
       "msg": ""
     }
   ]
@@ -43,12 +43,12 @@ Tools used:
 
 *** Definition
 
-`PUSH /groceries`
+`POST /groceries`
 
 *** Arguments
 
   - `"name":string` the name of the grocery
-  - `"amount":string` the amount of the grocery needed
+  - `"amount":integer` the amount of the grocery needed
   - `"msg":string` any extra information
 
 *** Response
@@ -58,9 +58,9 @@ Tools used:
 
   ```json
   {
-    "pk": "12",
+    "pk": 12,
     "name": "milk",
-    "amount": "2",
+    "amount": 2,
     "msg": "Needed for cake"
   }
   ```
@@ -79,9 +79,9 @@ Tools used:
 
   ```json
   {
-    "pk": "12",
+    "pk": 12,
     "name": "milk",
-    "amount": "2",
+    "amount": 2,
     "msg": "Needed for cake"
   }
   ```
@@ -96,7 +96,7 @@ Tools used:
 *** Arguments
 
   - `"name":string` the name of the grocery
-  - `"amount":string` the amount of the grocery needed
+  - `"amount":integer` the amount of the grocery needed
   - `"msg":string` any extra information
 
 *** Response
@@ -106,9 +106,9 @@ Tools used:
 
   ```json
   {
-    "pk": "12",
+    "pk": 12,
     "name": "milk",
-    "amount": "2",
+    "amount": 2,
     "message": "Needed for cake"
   }
   ```
